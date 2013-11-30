@@ -1,0 +1,29 @@
+<head>
+  <title>N⊕ </title>
+</head>
+<body>
+<div id="container">
+	<div class="header-wrapper">
+		{{> header }}
+	</div>
+	<div id="left-margin" class="margin"></div>
+	<div id="right-margin" class="margin"></div>
+	<div id="content-wrapper">
+		{{#if currentUser }}
+		<div id="home">
+			{{> home }}
+		</div>
+		{{/if}}
+		<div id="content">
+			{{ renderPage }}
+		</div>
+	</div>
+	<div id="footer-wrapper">
+		<footer>Foot</footer>
+	</div>
+</div>
+</body>
+
+<template name="intro">
+	The introduction.
+</template>

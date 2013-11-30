@@ -1,0 +1,20 @@
+<template name="home">
+	<div class="home fgbox">
+		<h1>User Name</h1>
+		<h4>user@email.com</h4>
+		{{> essayList }}
+		{{> composeEssay }}
+	</div>
+</template>
+
+
+<template name="composeEssay">
+<div class="compose">
+	<form id="essay-form">
+		<input type="text" id="essay-title"/>
+		<textarea id="essay-content"></textarea>
+		<input type="submit" id="save-essay" value="Save"/>
+		<input type="submit" id="publish-essay" value="Publish" />
+	</form>
+</div>
+</template>

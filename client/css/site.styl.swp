@@ -1,0 +1,343 @@
+/***************************************
+	VARIABLES
+ ***************************************/
+
+//	Background Colors
+$dark_red 	=#38000d;
+$dark_gray	=#0a0000;
+$steel 		=#0f0c17;
+$red_gray  	=#420b0b;
+$light_gray	=#dbc2c2;
+$error_red 	=#c34646;
+$fafa_white	=#fafafa;
+$trans_gray	=rgba(120,70,90,.1);
+
+//	Spacing
+$def_margin	=10px;
+$def_padding=10px;
+$def_border	=   0;
+$pg_width	= 70%;
+$pg_width_min = 300px;
+$pg_width_max = 900px;
+
+//	Text
+
+$font_family = 'Lustria', serif;
+$font_color = $dark_gray;
+$a_color = #600a06;
+$a_visited = #60062d;
+$highlight_color = rgba(96, 0, 10, 0.85);
+$h_font1 = 'IM Fell DW Pica SC', serif;
+$h_font2 = $font_family; 
+
+/***************************************
+	MIXINS
+ ***************************************/
+
+gradient($color1, $color2){
+  background-color: $color1;
+  background-image: -webkit-linear-gradient($color1, $color2, $color2);
+  background-image: -moz-linear-gradient(top,$color1, $color2, $color2);
+  background-image: -ms-linear-gradient($color1, $color2, $color2);
+  background-image: -o-linear-gradient($color1, $color2, $color2);
+  background-image: linear-gradient($color1, $color2, $color2);
+}
+
+content-spacing() 
+	width $pg_width
+	min-width $pg_width_min
+	max-width $pg_width_max
+	margin: 0 auto;
+	// padding:2px 0; // $def_padding;
+
+
+
+/***************************************
+	GLOBAL STYLES
+ ***************************************/
+
+// Divs and Containers
+
+body {
+	gradient $dark_red $dark_gray;
+	padding: 0;
+	margin: 0;
+	// font-family: $font_family; 
+	font-family: $font_family; 
+	color: $font_color;
+}
+
+header {
+	//background-image: url('../headerbg.png');
+	//background-repeat: repeat-x;
+	//background-position:0;
+	
+	content-spacing 
+	margin 0 auto
+	min-width $pg_width_min
+	width 70%
+	padding-top: 10px;
+	div#login {
+		margin: 8px 10px 0 10px;
+		float: right;
+		input {
+			margin-top:5px;
+			&#session_name {
+				width: 150px;
+			}
+
+			&#session_password {
+				width: 85px;
+			}
+		}
+	}
+}
+
+div#container {
+	//background-color: $trans_gray;
+	content-spacing;	
+	min-height: 600px;
+}
+
+form {
+	overflow: hidden;
+	padding: 20px;
+	label {
+		float: left;
+		text-align: right;
+		width: 88px;
+		margin-right:12px;
+	}
+	input, textarea {
+		font-family: $font_family; 
+		float:left;
+		border-radius: 3px;
+		border: 1px solid $dark_red;
+		background-color: $fafa_white;
+		&:focus {
+			border-color: $fafa_white;
+			background-color: $fafa_white;
+		}
+	}
+
+	input.button {
+	  background-image: linear-gradient(lighten($red_gray,5), $red_gray, $red_gray);
+	  background-image: -moz-linear-gradient(lighten($red_gray,5), $red_gray, $red_gray);
+	  background-image: -ms-linear-gradient(lighten($red_gray,5), $red_gray, $red_gray);
+	  background-color: $red_gray;
+	  border: 1px solid $steel;
+	  border-radius: 5px;
+	  color: $fafa_white;
+	  padding: 3px;
+	  &:hover {
+		background-image: linear-gradient(lighten($red_gray,10),lighten($red_gray,5),$red_gray);
+		background-image: -moz-linear-gradient(lighten($red_gray,10),lighten($red_gray,5),$red_gray);
+		background-image: -ms-linear-gradient(lighten($red_gray,10),lighten($red_gray,5),$red_gray);
+	  }
+	}
+
+	textarea {
+		width: 100%;
+		min-height: 180px;
+	}
+
+}
+
+.register {
+	input.button {
+		margin-left: 164px;
+	}
+	span.error {
+		position: relative;
+		top: -36px;
+		left: -200px;
+		line-height:0;
+		font-size: .7em;
+		font-weight: bold;
+	}
+}
+
+.essay {
+	line-height: 22px;
+	//text-align: justify;
+	text-justify: newspaper;
+	background-color: $red_gray;
+	
+	h1.title {
+		color: $dark_red;
+	}
+
+	.page {
+		columns:300px 2;
+		-webkit-columns:300px 2; /* Safari and Chrome */
+		-moz-columns:300px 2; /* Firefox */
+		column-rule: 2px dotted $dark_red;
+		-webkit-column-rule: 2px dotted $dark_red;
+		-moz-column-rule: 2px dotted $dark_red;
+		padding:10px 4px;
+		border-top: 1px solid #ddd;
+		h1 { font-size: 1.7em; }
+		h2 { font-size: 1.2em; }
+		h3 { font-size: 1.4em; }
+		h4 { 
+			font-size: 1.1em; 
+			font-weight: normal;
+		}
+		h5 { font-size: 1em; }
+		h6 { 
+			font-size: .8em;
+			text-transform: uppercase;
+	   	}
+
+		p {
+			margin-top:0;
+		}
+
+		blockquote {
+			text-align: left;
+		}
+	}
+
+	&::selection {
+		background: $highlight_color; /* Safari */
+	}
+	&::-moz-selection {
+		background: $highlight_color; /* Firefox */
+	}
+}
+
+.compose {
+	input[type="text"], textarea { width: 100%; }
+	input[type="text"] { font-family: $h_font1; }
+	textarea { min-height:400px; }
+
+}
+
+$flash_box_shadow = 1px 2px 4px $dark_gray;
+div#errors, div.error {
+	background-color: $error_red;
+	color: $fafa_white;
+	padding: $def_padding;
+	box-shadow: $flash_box_shadow;
+	ul {
+		list-style: none;
+		margin-top: 5px;
+	}
+}
+
+div.success {
+	padding: $def_padding;
+	background: $light_gray;
+	box-shadow: $flash_box_shadow;
+}
+
+.fgbox {
+  padding: $def_padding;
+  // margin: $def_margin;
+ // background-color: $light_gray;
+
+  background-color: $fafa_white;
+  box-shadow: 0px 5px 5px $dark_gray;
+}
+
+nav {
+  overflow: hidden;
+  ul {
+	  list-style-type: none;
+	  float: left;
+	  li {
+		  display: inline;
+		  margin-right: 10px;
+		  a {
+			  color: $fafa_white;
+			  //-moz-transition-property: color;
+			  //-moz-transition-duration: 2s;
+			  &:hover {
+				  color: $a_color;
+				  //-moz-transition-property: color;
+				  //-moz-transition-duration: 1s;
+			  }
+			  &:visited {
+				  color: $fafa_white;
+			  }
+		  }
+	  }
+  }
+}
+
+div.center {
+	margin: 0 auto;
+}
+
+div.padded {
+	padding: $def_padding;
+}
+
+div#footer {
+	@include gradient($red_gray,$dark_gray);
+	//min-height:250px;
+	width: $pg_width;
+	max-width: $pg_width_max;
+	min-width: $pg_width_min;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+span.title {
+	font-family: $h_font1;
+	font-size: 1.2em;
+}
+
+// Inner Elements
+
+a {
+    font-weight: bold;
+	text-decoration: none;
+	color: $a_color;
+	&:hover {
+		color: lighten($a_color, 10);
+	}
+	&:visited {
+		color: $a_visited;
+	}
+	&.link_button {
+		float: right;
+		padding: 2px;
+		border-radius: 5px;
+		border: 2px solid $steel;
+		background-color: $dark_red;
+		color: $light_gray;
+		&:hover {
+			background-color: lighten($dark_red,10);
+		}
+	}
+}
+
+h1, h3 {
+	font-weight: normal;
+	font-family: $h_font1;
+}
+
+h2, h4 {
+	font-family: $h_font2; 
+	margin-bottom: 5px;
+}
+
+h1.title { 
+	margin-left: 10px; 
+	color: $light_gray;
+}
+
+.error {
+	color: $error_red;
+}
+
+.note {
+	font-size: .7em;
+	font-weight: bold;
+}
+
+/***************************************
+	More specific style	
+ ***************************************/
+

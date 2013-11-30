@@ -1,0 +1,35 @@
+<template name="essayPage">
+<div class="essay fgbox">
+	{{#with currentEssay}}
+		{{> essay}}
+	{{/with}}
+</div>
+</template>
+
+<template name="essay">
+<div class="essay-header">
+	<h1>{{title}}</h1>
+	<h5>{{subtitle}}</h5>
+	<h4>By {{author}}</h4>
+</div>
+<div class="page">
+	{{content}}
+</div>
+</div>
+</template>
+
+<template name="essayList">
+<div class="essaysOfAuthor list">
+	{{#each essays}}
+		{{> listedEssay }}
+	{{/each}}
+</div>
+</template>
+
+<template name="listedEssay">
+<div class="listed essay">
+	<a href="{{essayPagePath this}}"><h3>{{title}}</h3></a>
+	<h6>By {{author}}</h6>
+</div>
+</template>
+
